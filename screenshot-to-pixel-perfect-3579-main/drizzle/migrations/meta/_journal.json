@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1794354235657,
+      "tag": "0000_create_contact_requests",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794357392168,
+      "tag": "0001_brand_accounts_and_plan_requests",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794832551308,
+      "tag": "0002_tighten_plan_requests_insert_policy",
+      "breakpoints": true
+    }
+  ]
+}
