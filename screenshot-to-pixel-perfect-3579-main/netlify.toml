@@ -1,6 +1,6 @@
 [build]
-  command = "npm run build"
+  command = "npm run build && mkdir -p netlify/functions && cp -R .netlify/functions-internal/server netlify/functions/"
   publish = "dist"
 
 [functions]
-  directory = ".netlify/functions-internal"
+  directory = "netlify/functions"
