@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from "react";
 
+import { normalizeBrandSlug } from "@/data/brands";
 import { DEFAULT_FAIR_ID } from "@/data/fairs";
 import type { Answers, DimensionKey } from "@/lib/affinity";
 
@@ -24,7 +25,8 @@ function read(): VisitorState {
   if (cache) return cache;
   try {
     const raw = window.localStorage.getItem(KEY);
-    cache = raw ? { ...DEFAULT_STATE, ...(JSON.parse(raw) as Partial<VisitorState>) } : DEFAULT_STATE;
+    const state = raw ? { ...DEFAULT_STATE, ...(JSON.parse(raw) as Partial<VisitorState>) } : DEFAULT_STATE;
+    cache = { ...state, saved: [...new Set(state.saved.map(normalizeBrandSlug))] };
   } catch {
     cache = DEFAULT_STATE;
   }

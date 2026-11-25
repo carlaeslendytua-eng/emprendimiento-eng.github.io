@@ -43,19 +43,18 @@ export function planGeometry(fair: Fair & { grid: NonNullable<Fair["grid"]> }) {
 
 const pct = (v: number, total: number) => `${(v / total) * 100}%`;
 
-const standFourRoute = { path: "M 890 205 V 275 H 1215 V 256", x: 1215, y: 256 };
 const puceRoutes: Record<string, { path: string; x: number; y: number }> = {
-  "entre-si": { path: "M 890 205 V 275 H 1358 V 297", x: 1358, y: 297 },
-  cuenticos: standFourRoute,
-  "pan-comido": standFourRoute,
-  memora: { path: "M 890 205 V 275 H 1070 V 297", x: 1070, y: 297 },
-  nergy: { path: "M 890 205 V 275 H 1431 V 256", x: 1431, y: 256 },
-  "cuida-dog": { path: "M 890 205 V 275 H 1015 V 370 H 1286 V 356", x: 1286, y: 356 },
+  "55": { path: "M 590 205 V 121 H 514", x: 514, y: 121 },
+  "51": { path: "M 590 205 V 275 H 555 V 298", x: 555, y: 298 },
+  "59": { path: "M 590 205 V 121 H 660", x: 660, y: 121 },
+  "57": { path: "M 590 205 V 181 H 514", x: 514, y: 181 },
+  "60": { path: "M 590 205 V 151 H 660", x: 660, y: 151 },
+  "62": { path: "M 890 205 V 91 H 819", x: 819, y: 91 },
 };
 
 function ImagePlan({ fair, selectedSlug, compact }: Pick<Props, "fair" | "selectedSlug" | "compact">) {
-  const route = selectedSlug ? puceRoutes[selectedSlug] : undefined;
   const exhibitor = fair.exhibitors.find((item) => item.brandSlug === selectedSlug);
+  const route = exhibitor ? puceRoutes[exhibitor.stand] : undefined;
   const brand = selectedSlug ? getBrand(selectedSlug) : undefined;
   const [zoomed, setZoomed] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -74,7 +73,7 @@ function ImagePlan({ fair, selectedSlug, compact }: Pick<Props, "fair" | "select
   return (
     <div>
       <div ref={mapRef} className="overflow-auto rounded-2xl bg-muted/50">
-        <svg viewBox={zoomed && route ? "770 155 760 220" : "0 0 1834 858"} className="h-auto w-full" role="img" aria-label={brand && exhibitor && route ? `Ruta orientativa desde la puerta superior hasta ${brand.name}, stand ${exhibitor.stand}` : "Plano de la feria PUCE con stands numerados y puertas"}>
+        <svg viewBox={zoomed && route ? "400 45 585 320" : "0 0 1834 858"} className="h-auto w-full" role="img" aria-label={brand && exhibitor && route ? `Ruta orientativa desde la puerta superior hasta ${brand.name}, stand ${exhibitor.stand}` : "Plano de la feria PUCE con stands numerados y puertas"}>
           <image href={fair.mapImage} width="1834" height="858" />
           {route && visible && <g key={selectedSlug}>
             <path d={route.path} pathLength="1" className="draw-route" fill="none" stroke="white" strokeWidth="14" strokeLinecap="round" strokeLinejoin="round" />

@@ -97,7 +97,7 @@ function BrandsPage() {
               width={1024}
               height={768}
               loading="lazy"
-              className={`aspect-[4/3] w-full ${["entre-si", "cuenticos"].includes(brand.slug) ? "bg-card object-contain p-3 sm:p-8" : "object-cover"}`}
+              className={`aspect-[4/3] w-full ${["entre-si", "cuentico"].includes(brand.slug) ? "bg-card object-contain p-3 sm:p-8" : "object-cover"}`}
             />
             <div className="flex flex-1 flex-col gap-3 p-3 sm:p-5">
               <div>

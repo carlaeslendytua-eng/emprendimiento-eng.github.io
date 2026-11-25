@@ -5,7 +5,7 @@ import { useState } from "react";
 import { BrandActions } from "@/components/entresi/BrandActions";
 import { FairPicker } from "@/components/entresi/FairPicker";
 import { FairPlan } from "@/components/entresi/FairPlan";
-import { getBrand } from "@/data/brands";
+import { getBrand, normalizeBrandSlug } from "@/data/brands";
 import { useActiveFair } from "@/lib/use-active-fair";
 import { useVisitor, visitorActions } from "@/lib/visitor-store";
 import { Button } from "@/components/ui/button";
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/mapa")({
     const marca = s["marca"];
     return {
       ...(typeof feria === "string" && FAIRS.some((f) => f.id === feria) ? { feria } : {}),
-      ...(typeof marca === "string" ? { marca } : {}),
+      ...(typeof marca === "string" ? { marca: normalizeBrandSlug(marca) } : {}),
     };
   },
   head: () => ({
@@ -172,7 +172,7 @@ function FairMapContent({
                         loading="lazy"
                         className={cn(
                           "aspect-[4/3] w-full",
-                          ["entre-si", "cuenticos"].includes(brand.slug)
+                          ["entre-si", "cuentico"].includes(brand.slug)
                             ? "object-contain p-4"
                             : "object-cover",
                         )}

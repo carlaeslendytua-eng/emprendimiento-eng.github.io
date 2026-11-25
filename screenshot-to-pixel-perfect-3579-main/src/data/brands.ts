@@ -428,7 +428,7 @@ const fairBrandAffinity = {
       "ferias-prioridad": "recomienda marcas por afinidad",
     },
   },
-  "cuenticos": {
+  "cuentico": {
     affinity: { category: ["lectura-categoria"], values: ["lectura-valores"], aesthetics: ["lectura-estilo"], motivations: ["lectura-motivacion"], products: ["lectura-productos"], priorities: ["lectura-prioridad"] },
     evidence: {
       "lectura-categoria": "ayuda a desarrollar hábitos lectores en niños",
@@ -484,20 +484,20 @@ BRANDS.push(
     differentiators: ["Descubrimiento de marcas por afinidad", "Orientación para encontrar emprendimientos en ferias", "Servicios de visibilidad y conexión para microempresas"],
     keywords: ["ferias", "emprendimientos", "conexiones"], ...fairBrandAffinity["entre-si"],
   },
-  ...["Cuenticos", "MEMORA"].map((name): Brand => ({
+  ...["Cuentico", "MEMORA"].map((name): Brand => ({
     slug: name.toLowerCase(),
-    name: name === "Cuenticos" ? "Cuentico" : name,
+    name,
     tagline: "Emprendimiento participante en la feria PUCE",
     category: "Emprendimiento",
-    image: name === "Cuenticos" ? cuenticoLogo : memoraLogo,
+    image: name === "Cuentico" ? cuenticoLogo : memoraLogo,
     group: "Otros emprendimientos", plan: "visibilidad",
     story:
-      name === "Cuenticos"
+      name === "Cuentico"
         ? "Cuentico es una aplicación de lectura infantil que integra metodologías pedagógicas para fortalecer las habilidades lectoras en niños de 6 a 9 años. A través de cuentos interactivos, actividades de comprensión y estrategias de lectura guiada, promueve el aprendizaje progresivo, la participación activa y el desarrollo de hábitos lectores. Además, ofrece herramientas para que los padres acompañen el proceso educativo y conozcan los avances de sus hijos."
         : "Memora es una plataforma digital que permite conservar, organizar y compartir recuerdos de manera creativa y colaborativa. A través de fotografías, videos, audios y textos, los usuarios pueden crear álbumes personalizados con plantillas y preguntas guiadas que facilitan la reconstrucción de sus historias. Además, ofrece la posibilidad de transformar estos recuerdos en libros digitales o impresos, fortaleciendo los vínculos familiares y evitando que las historias y los momentos especiales se pierdan con el paso del tiempo.",
     highlights: [], gallery: [], products: [], materials: [], processes: [], style: [], values: [],
     differentiators:
-      name === "Cuenticos"
+      name === "Cuentico"
         ? [
             "Actividades de comprensión lectora que fomentan el vínculo familiar",
             "Trabajo conjunto con pedagogos",
@@ -509,7 +509,7 @@ BRANDS.push(
             "Creación guiada y colaborativa",
           ],
     keywords: [name.toLowerCase()],
-    ...(name === "Cuenticos" ? fairBrandAffinity.cuenticos : fairBrandAffinity.memora),
+    ...(name === "Cuentico" ? fairBrandAffinity.cuentico : fairBrandAffinity.memora),
   })),
   {
     slug: "nergy",
@@ -580,4 +580,6 @@ BRANDS.push(
   },
 );
 
-export const getBrand = (slug: string) => BRANDS.find((b) => b.slug === slug);
+export const normalizeBrandSlug = (slug: string) => slug === "cuenticos" ? "cuentico" : slug;
+
+export const getBrand = (slug: string) => BRANDS.find((b) => b.slug === normalizeBrandSlug(slug));

@@ -110,7 +110,7 @@ function BrandProfile() {
               alt={`Productos de ${brand.name}`}
               width={1024}
               height={768}
-              className={`h-full w-full ${["entre-si", "cuenticos"].includes(brand.slug) ? "object-contain p-6" : "object-cover"} ${brand.slug === "cuida-dog" ? "scale-110" : ""}`}
+              className={`h-full w-full ${["entre-si", "cuentico"].includes(brand.slug) ? "object-contain p-6" : "object-cover"} ${brand.slug === "cuida-dog" ? "scale-110" : ""}`}
             />
           </div>
           {actions}

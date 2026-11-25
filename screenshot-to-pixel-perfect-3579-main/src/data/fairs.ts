@@ -33,12 +33,12 @@ export const FAIRS: Fair[] = [
     mapImage: puceMap,
     grid: null,
     exhibitors: [
-      { brandSlug: "entre-si", stand: "34", zone: "PUCE" },
-      { brandSlug: "cuenticos", stand: "4", zone: "PUCE" },
-      { brandSlug: "memora", stand: "30", zone: "PUCE" },
-      { brandSlug: "nergy", stand: "7", zone: "PUCE" },
-      { brandSlug: "cuida-dog", stand: "38", zone: "PUCE" },
-      { brandSlug: "pan-comido", stand: "4", zone: "PUCE" },
+      { brandSlug: "entre-si", stand: "55", zone: "PUCE" },
+      { brandSlug: "cuentico", stand: "51", zone: "PUCE" },
+      { brandSlug: "memora", stand: "57", zone: "PUCE" },
+      { brandSlug: "nergy", stand: "60", zone: "PUCE" },
+      { brandSlug: "cuida-dog", stand: "62", zone: "PUCE" },
+      { brandSlug: "pan-comido", stand: "59", zone: "PUCE" },
     ],
   },
 ];
